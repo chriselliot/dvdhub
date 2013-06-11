@@ -26,11 +26,13 @@ class GenreManager {
 	}
 }
 
+/*
 $oGenreMan = new GenreManager();
 $aAllGenre = $oGenreMan->getAllGenre();
 
 echo "<pre>";
 print_r($aAllGenre);
 echo "</pre>";
+*/
 
 ?>

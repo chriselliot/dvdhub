@@ -1,5 +1,12 @@
 <?php
 
+require_once ('menuView.php');
+require_once('genreManager.php');
+$oMV = new MenuView();
+$oGM = new GenreManager();
+
+$aAllGenre = $oGM->getAllGenre();
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -21,15 +28,7 @@
     			<li><a href="" id="mycart">My Cart</a></li>
     		</ul>
     	</div>
-    		<ul id="categories">
-    			<li id="nav-title">Categories</li>
-    			<li><a href="category.php">Comedy</a></li>
-    			<li><a href="category.php">Action</a></li>
-    			<li><a href="category.php">Sci-fi</a></li>
-    			<li><a href="category.php">Horror</a></li>
-    			<li><a href="category.php">Drama</a></li>
-    			<li><a href="category.php">Thriller</a></li>
-    			<li><a href="category.php">Kids</a></li>
-    			<li id="free"></li>
-    		</ul>
+
+    		<?php  echo $oMV->render($aAllGenre); ?>
+
     	<div id="main">
