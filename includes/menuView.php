@@ -10,7 +10,7 @@ class MenuView {
     for ($iCount=0; $iCount<count($aGenre) ;$iCount++) {
 
         $oCurrentGenre = $aGenre[$iCount];
-        $sHTML .=  '<li><a href="category.php">' . $oCurrentGenre->typeName .'</a></li>';
+        $sHTML .=  '<li><a href="category.php?typeID='.$oCurrentGenre->typeID.'">' . $oCurrentGenre->typeName .'</a></li>';
         
     }
 
