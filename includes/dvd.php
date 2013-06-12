@@ -5,6 +5,7 @@ class Dvd {
 
 	private $iProductID;
 	private $sProductName;
+	private $sDirector;
 	private $sDescription; 
 	private $iPrice; 
 	private $iTypeID; 
@@ -17,6 +18,7 @@ class Dvd {
 
 		$this->iProductID = 0;
 		$this->sProductName = "";
+		$this->sDirector = "";
 		$this->sDescription = "";
 		$this->iPrice = 0;
 		$this->iTypeID = 0;
@@ -30,13 +32,14 @@ class Dvd {
 	public function load($iProductID){
 
 		$oDatabase = new Database();
-		$sQuery = "SELECT ProductID, ProductName, Description, Price, TypeID, PhotoPath, Active, TrailerLink FROM tbproduct WHERE ProductID = " .$iProductID;
+		$sQuery = "SELECT ProductID, ProductName, Director, Description, Price, TypeID, PhotoPath, Active, TrailerLink FROM tbproduct WHERE ProductID = " .$iProductID;
 
 		$oResult = $oDatabase->query($sQuery);
 		$aDvdInfo = $oDatabase->fetch_array($oResult);
 
 		$this->iProductID = $aDvdInfo['ProductID'];
 		$this->sProductName = $aDvdInfo['ProductName'];
+		$this->sDirector = $aDvdInfo['Director'];
 		$this->sDescription = $aDvdInfo['Description'];
 		$this->iPrice = $aDvdInfo['Price'];
 		$this->iTypeID = $aDvdInfo['TypeID'];
@@ -61,10 +64,13 @@ class Dvd {
 			case "productID":
 				return $this->iProductID;
 				break;
-			case "productName":
+			case "title":
 				return $this->sProductName;
 				break;
-			case "description":
+			case "director":
+				return $this->sDirector;
+				break;
+			case "sypnosis":
 				return $this->sDescription;
 				break;
 			case "price":
@@ -88,12 +94,5 @@ class Dvd {
 	}
 
 }
-/*
-$oDvd = new Dvd();
-$oDvd->load(1);
 
-echo "<pre>";
-print_r($oDvd);
-echo "</pre>";
-*/
 ?>

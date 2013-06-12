@@ -39,6 +39,7 @@ p {
 	line-height: 20px;
 	padding-top: 20px;
 	border-bottom: 2px dotted silver;
+	height: 200px;
 }
 
 .product h3 {
@@ -93,10 +94,12 @@ p {
 }
 .director {
 	font-weight: bold;
-	display: block;
+	display: inline-block;
 	margin-bottom: 5px;
 }
-
+.sypnosis {
+	height: 90px;
+}
 .sypnosis span {
 	height: 90px;
 }
@@ -209,6 +212,7 @@ p {
 
 #footer {
 	clear: both;
+	height: 50px;
 }
 
 

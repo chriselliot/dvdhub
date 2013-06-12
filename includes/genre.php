@@ -62,18 +62,14 @@ class Genre {
 			case "displayOrder":
 				return $this->iDisplayOrder;
 				break;
+			case "dvds":
+				return $this->aDvd;
+				break;
 			default:
 				die($sProperty . " cannot be read from.");
 		}
 	}
 
 }
-/*
-$oGenre = new Genre();
-$oGenre->load(5);
 
-echo "<pre>";
-print_r($oGenre);
-echo "</pre>";
-*/
 ?>
