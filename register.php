@@ -11,9 +11,9 @@ $oForm->makeTextArea("address","Address");
 $oForm->makeInput("phone","Phone Number");
 $oForm->makeInput("email", "Email Address");
 $oForm->makeInput("username", "Username");
-$oForm->makeInput("password", "Password");
+$oForm->makePass("password", "Password");
+$oForm->makePass("confirmpassword", "Confirm Password");
 $oForm->makeSubmit("submit", "Register");
-
 
 ?>
     

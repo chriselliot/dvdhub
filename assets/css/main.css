@@ -34,6 +34,31 @@ p {
 	margin-bottom: 30px;
 }
 
+form label {
+	font-family: 'arial','sans-serif';
+	width: 150px;
+	display: inline-block;
+}
+form input {
+	height: 20px;
+	margin-bottom: 5px;
+	width: 202px;
+}
+form #submit {
+	background-image: url('../images/register-button.png');
+	display: block;
+	height: 38px;
+	width: 140px;
+	text-indent: -999999px;
+	border: none;
+	cursor: pointer;
+	margin-top: 10px;
+	margin-left: 153px;
+}
+form #submit:hover {
+	background-position: 0 38px;
+}
+
 .product {
 	font-family: 'arial', 'sans-serif';
 	line-height: 20px;

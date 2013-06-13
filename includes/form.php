@@ -14,7 +14,7 @@ class Form {
 
 		$this->sHTML .= '
 			<label for="'.$sControlName.'">'.$sLabel.':</label>
-            <input type="text" name="'.$sControlName.'" id="'.$sControlName.'" class="textBox" value="'.$sData.'"/>
+            <input type="text" name="'.$sControlName.'" id="'.$sControlName.'" value=""/>
 			<div class="message"></div><div class="clear"></div>';
 
 	}
@@ -23,9 +23,18 @@ class Form {
 
 		$this->sHTML .= '
 			<label for="'.$sControlName.'">'.$sLabel.':</label>
-            <div class="message"></div><textarea name="'.$sControlName.'" id="'.$sControlName.'"></textarea>
+            <div class="message"></div><textarea rows="4" cols="42" name="'.$sControlName.'" id="'.$sControlName.'"></textarea>
 			<div class="clear"></div>';
 		
+	}
+
+	public function makePass($sControlName,$sLabel){
+
+		$this->sHTML .= '
+			<label for="'.$sControlName.'">'.$sLabel.':</label>
+            <input type="password" name="'.$sControlName.'" id="'.$sControlName.'" value=""/>
+			<div class="message"></div><div class="clear"></div>';
+
 	}
 
 	public function makeSubmit($sControlName,$sLabel){

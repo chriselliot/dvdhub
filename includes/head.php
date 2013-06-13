@@ -24,7 +24,7 @@ $aAllGenre = $oGM->getAllGenre();
     		<h1>New release DVDs <br />at <span>ridiculously low </span>prices</h1>
     		<ul id="buttons">
     			<li><a href="" id="login">Login</a></li>
-    			<li><a href="" id="register">Register</a></li>
+    			<li><a href="register.php" id="register">Register</a></li>
     			<li><a href="" id="mycart">My Cart</a></li>
     		</ul>
     	</div>
