@@ -41,8 +41,10 @@ form label {
 }
 form input {
 	height: 20px;
-	margin-bottom: 5px;
 	width: 202px;
+}
+form textarea {
+	margin-bottom: 15px;
 }
 form #submit {
 	background-image: url('../images/register-button.png');
@@ -57,6 +59,12 @@ form #submit {
 }
 form #submit:hover {
 	background-position: 0 38px;
+}
+.message {
+	font-size: 10px;
+	height: 10px;
+	color: red;
+	margin-bottom: 10px;
 }
 
 .product {
