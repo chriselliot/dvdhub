@@ -10,6 +10,7 @@ if(isset($_POST["submit"])){
 
     $oForm->data = $_POST;  
     $oForm->checkRequired("firstname");
+    $oForm->raiseCustomError("firstname","test");
     $oForm->checkRequired("lastname");
     $oForm->checkRequired("address");
     $oForm->checkRequired("phone");

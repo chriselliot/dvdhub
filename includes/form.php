@@ -93,6 +93,12 @@ class Form {
 
 	}
 
+	public function raiseCustomError($sControlName,$sErrorMessage) {
+
+		$this->aErrors[$sControlName] = $sErrorMessage;
+		
+	}
+
 
 	public function __get($sProperty){
 

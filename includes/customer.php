@@ -26,6 +26,47 @@ class Customer {
 
 	}
 
+	public function load($iCustomerID){
+
+		$oDatabase = new Database();
+
+		$sQuery = "SELECT CustomerID, FirstName, LastName, Address, Telephone, Email, UserName, Password FROM tbcustomer WHERE CustomerID='".$iCustomerID."'";
+
+		$oResult = $oDatabase->query($sQuery);
+		$aCustomer = $oDatabase->fetch_array($oResult);
+
+		$this->iCustomerID = $aCustomer["CustomerID"];
+		$this->sFirstName = $aCustomer["FirstName"];
+		$this->sLastName = $aCustomer["LastName"];
+		$this->sAddress = $aCustomer["Address"];
+		$this->sTelephone = $aCustomer["Telephone"];
+		$this->sEmail = $aCustomer["Email"];
+		$this->sUserName = $aCustomer["UserName"];
+		$this->sPassword = $aCustomer["Password"];
+
+		$oDatabase->close();
+	}
+
+	public function loadByUserName($sUserName){
+
+		$oDatabase = new Database();
+
+		$sQuery = "SELECT CustomerID, UserName FROM tbcustomer WHERE UserName ='".$sUserName."'";
+		$oResult = $oDatabase->query($sQuery);
+		$aCustomer = $oDatabase->fetch_array($oResult);
+
+		$this->iCustomerID = $aCustomer["CustomerID"];
+		$this->sUserName = $aCustomer["UserName"];
+		
+		/*if (){
+			return false
+		}else {
+			return true
+		}*/
+
+		$oDatabase->close();
+	}
+
 	public function save(){
 
 		$oDatabase = new Database();
@@ -107,5 +148,12 @@ class Customer {
 
 }
 
+$oCustomer = new Customer();
+$oCustomer->loadByUserName('chris');
+
+
+echo "<pre>";
+print_r($oCustomer);
+echo "</pre>";
 
 ?>
