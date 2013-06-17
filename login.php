@@ -1,10 +1,12 @@
 <?php
-
+session_start();
 require_once("includes/head.php");
 require_once("includes/form.php");
 require_once("includes/customer.php");
 
+
 $oForm = new Form();
+
 
 if(isset($_POST["submit"])){
 
@@ -18,7 +20,9 @@ if(isset($_POST["submit"])){
     }else{
         if($oTestCustomer->password == $_POST["password"]){
 
-            header("Location:index.php"); 
+            $_SESSION["currentUser"] = $oTestCustomer->customerID;
+
+            header("Location: mydetails.php"); 
             exit;
 
         }else{

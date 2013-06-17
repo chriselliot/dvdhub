@@ -179,14 +179,14 @@ form #submit:hover {
 
 #buttons {
 	float: right;
-	margin-top: 30px;
+	margin-top: 20px;
 	margin-right: 30px;
 }
 
 #buttons li {
 	width: 140px;
 	list-style: none;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 #buttons a {
@@ -209,6 +209,9 @@ form #submit:hover {
 
 #buttons #mycart {
 	background-image: url('../images/my-cart-button.png');
+}
+#buttons #mydetails {
+	background-image: url('../images/my-details-button.png');
 }
 
 #categories {
@@ -288,4 +291,12 @@ form #submit:hover {
 	clear: both;
 	margin-top: 30px;
 	margin-left: 10px;
+}
+#mydetails span {
+	width: 150px;
+	display: inline-block;
+	color: #00A99D;
+}
+#mydetails p{
+	line-height: 30px;
 }

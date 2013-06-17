@@ -26,6 +26,7 @@ $aAllGenre = $oGM->getAllGenre();
     			<li><a href="login.php" id="login">Login</a></li>
     			<li><a href="register.php" id="register">Register</a></li>
     			<li><a href="" id="mycart">My Cart</a></li>
+                <li><a href="mydetails.php" id="mydetails">My Details</a></li>
     		</ul>
     	</div>
 
