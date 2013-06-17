@@ -10,17 +10,24 @@ if(isset($_POST["submit"])){
 
     $oForm->data = $_POST;  
     $oForm->checkRequired("firstname");
-    $oForm->raiseCustomError("firstname","test");
     $oForm->checkRequired("lastname");
     $oForm->checkRequired("address");
     $oForm->checkRequired("phone");
-    $oForm->checkRequired("email");
+    $oForm->checkEmail("email");
     $oForm->checkRequired("username");
     $oForm->checkRequired("password");
     $oForm->checkRequired("confirmpassword");
+    
+    $oTestCustomer = new Customer();
+    $bLoadResult = $oTestCustomer->loadByUserName($_POST["username"]);
+    
+    if($bLoadResult == true){
+
+         $oForm->raiseCustomError("username","Username already taken");
+    }
        
 
-      if($oForm->valid==true){
+    if($oForm->valid==true){
 
             $oCustomer = new Customer();
             $oCustomer->firstname = $_POST["firstname"];
@@ -33,10 +40,10 @@ if(isset($_POST["submit"])){
             $oCustomer->password = $_POST["confirmpassword"];
             $oCustomer->save();
 
-      header("Location:index.php"); 
-      exit;
+            header("Location:index.php"); 
+            exit;
 
-      }
+    }
 
 } 
 

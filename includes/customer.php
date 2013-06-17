@@ -25,7 +25,8 @@ class Customer {
 		$this->sPassword = "";
 
 	}
-
+	
+	//precon: ID to load must exist
 	public function load($iCustomerID){
 
 		$oDatabase = new Database();
@@ -47,24 +48,26 @@ class Customer {
 		$oDatabase->close();
 	}
 
+	//does not require Username to exist
 	public function loadByUserName($sUserName){
 
 		$oDatabase = new Database();
 
-		$sQuery = "SELECT CustomerID, UserName FROM tbcustomer WHERE UserName ='".$sUserName."'";
+		$sQuery = "SELECT CustomerID FROM tbcustomer WHERE UserName ='".$sUserName."'";
 		$oResult = $oDatabase->query($sQuery);
 		$aCustomer = $oDatabase->fetch_array($oResult);
 
-		$this->iCustomerID = $aCustomer["CustomerID"];
-		$this->sUserName = $aCustomer["UserName"];
-		
-		/*if (){
-			return false
-		}else {
-			return true
-		}*/
-
 		$oDatabase->close();
+	
+		if ($aCustomer != false){
+
+			$this->load( $aCustomer["CustomerID"]);
+			return true;
+		}else {
+			return false;
+		}
+
+		
 	}
 
 	public function save(){
@@ -148,12 +151,13 @@ class Customer {
 
 }
 
-$oCustomer = new Customer();
-$oCustomer->loadByUserName('chris');
+// $oCustomer = new Customer();
+// $bResult = $oCustomer->loadByUserName('weg');
 
 
-echo "<pre>";
-print_r($oCustomer);
-echo "</pre>";
+// echo "<pre>";
+// print_r($oCustomer);
+// print_r($bResult);
+// echo "</pre>";
 
 ?>

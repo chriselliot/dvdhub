@@ -93,6 +93,27 @@ class Form {
 
 	}
 
+	//wont check if data is not availale
+
+	public function checkEmail($sControlName){
+
+		$sData = "";
+
+		if(isset($this->aData[$sControlName])){
+			$sData = trim($this->aData[$sControlName]); 
+		}
+
+		if(strlen($sData)==0){
+			$this->aErrors[$sControlName] = "Required field"; 
+		}else{
+
+			if(filter_var($sData, FILTER_VALIDATE_EMAIL) == false){
+				$this->aErrors[$sControlName] = "Email is invalid"; 
+			}
+		}	
+
+	}
+
 	public function raiseCustomError($sControlName,$sErrorMessage) {
 
 		$this->aErrors[$sControlName] = $sErrorMessage;

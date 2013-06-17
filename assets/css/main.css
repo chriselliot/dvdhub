@@ -60,6 +60,20 @@ form #submit {
 form #submit:hover {
 	background-position: 0 38px;
 }
+#login-butt form #submit {
+	background-image: url('../images/login-button.png');
+	display: block;
+	height: 38px;
+	width: 140px;
+	text-indent: -999999px;
+	border: none;
+	cursor: pointer;
+	margin-top: 10px;
+	margin-left: 153px;
+}
+#login-butt form #submit:hover {
+	background-position: 0 38px;
+}
 .message {
 	font-size: 10px;
 	height: 10px;
