@@ -300,3 +300,12 @@ form #submit:hover {
 #mydetails p{
 	line-height: 30px;
 }
+#mydetails a {
+	font-weight: bold;
+	color: #58595B;
+	font-family: 'arial', 'sans-serif';
+	text-decoration: none;
+}
+#mydetails a:hover {
+	color: #00A99D;
+}

@@ -76,18 +76,38 @@ class Customer {
 
 		if($this->iCustomerID == 0){
 		
-		$sQuery = "INSERT INTO tbcustomer (FirstName, LastName, Address, Telephone, Email, UserName, Password)
-				VALUES ('".$this->sFirstName."', '".$this->sLastName."', '".$this->sAddress."','".$this->sTelephone."', '".$this->sEmail."', '".$this->sUserName."', '".$this->sPassword."')";
-		
-		$oResult = $oDatabase->query($sQuery);
+			$sQuery = "INSERT INTO tbcustomer (FirstName, LastName, Address, Telephone, Email, UserName, Password)
+					VALUES ('".$this->sFirstName."', '".$this->sLastName."', '".$this->sAddress."','".$this->sTelephone."', '".$this->sEmail."', '".$this->sUserName."', '".$this->sPassword."')";
+			
+			$oResult = $oDatabase->query($sQuery);
 
+		if($oResult == true){
+			$this->iCustomerID = $oDatabase->get_insert_id();
 		}else{
 			die($sQuery . " is invalid.");
 		}	
 
-		$oDatabase->close();
+		}else{
+			$sQuery = "UPDATE tbcustomer 
+						SET FirstName = '".$this->sFirstName."',
+							LastName = '".$this->sLastName."',
+							Address = '".$this->sAddress."',
+							Telephone = '".$this->sTelephone."',
+							Email = '".$this->sEmail."'
+						WHERE CustomerID = ".$this->iCustomerID;
+						
+
+			$oResult = $oDatabase->query($sQuery);
+			if($oResult == false){
+				die($sQuery . " is invalid.");
+			}
+		}
+
+	$oDatabase->close();
 
 	}
+
+
 
 	public function __get($sProperty){
 		switch ($sProperty){
