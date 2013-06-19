@@ -202,6 +202,9 @@ form #submit:hover {
 #buttons #login {
 	background-image: url('../images/login-button.png');
 }
+#buttons #logout {
+	background-image: url('../images/logout-button.png');
+}
 
 #buttons #register {
 	background-image: url('../images/register-button.png');
@@ -310,5 +313,58 @@ form #submit:hover {
 	color: #00A99D;
 }
 #update #submit {
+	background-image: url('../images/update-button.png');
 }
-
+#cart-headings h3 {
+	font-family: 'arial';
+	width:110px;
+	float:left;
+	color: #00A99D;
+	font-size: 18px;
+	margin-left: 15px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+#cart-headings #first-heading {
+	margin-left: 0;
+	width: 370px;
+	text-align: left;
+}
+.product-cell {
+	width: 370px;
+	float: left;
+	border-bottom: 1px dotted silver;
+	border-top: 1px dotted silver;
+	padding: 10px 0 10px 0;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.cell {
+	width: 110px;
+	float: left;
+	margin-left: 15px;
+	border-bottom: 1px dotted silver;
+	border-top: 1px dotted silver;
+	padding: 10px 0 10px 0;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.cart-line {
+	font-family: 'arial';
+	line-height: 30px;
+}
+.cart-line a {
+	width: 30px;
+	height: 30px;
+	text-indent: -999999px;
+	background-image: url('../images/delete-button.png');
+	display: block;
+	margin: auto;
+}
+.cart-line a:hover{
+	background-position: 0 30px;
+}
+.cart-line #total {
+	font-weight: bold;
+	color: #00A99D;
+}
