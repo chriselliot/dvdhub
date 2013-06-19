@@ -1,5 +1,4 @@
 <?php
-
 require_once("includes/head.php");
 require_once("includes/form.php");
 require_once("includes/customer.php");

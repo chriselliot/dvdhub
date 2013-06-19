@@ -57,16 +57,15 @@ if(isset($_SESSION["currentUser"]) == false){
 		$oForm->makeTextArea("address","Address");
 		$oForm->makeInput("phone","Phone Number");
 		$oForm->makeInput("email", "Email Address");
-		$oForm->makeSubmit("submit", "Register");
+		$oForm->makeSubmit("submit", "Update My Details");
 
 	}
 ?>
 
 <h1>Edit <span>My Details</span></h1>
 
-<?php
-	
-	echo $oForm->html;
+<div id="update"><?php echo $oForm->html; ?></div>
 
+<?php
 require_once("includes/foot.php");
 ?>

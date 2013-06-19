@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once ('menuView.php');
 require_once('genreManager.php');
 $oMV = new MenuView();
@@ -23,7 +23,15 @@ $aAllGenre = $oGM->getAllGenre();
     		<a href="index.php"><img id="logo" src="assets/images/logo.png" width="169" height="169" alt="logo"></img></a>
     		<h1>New release DVDs <br />at <span>ridiculously low </span>prices</h1>
     		<ul id="buttons">
-    			<li><a href="login.php" id="login">Login</a></li>
+
+            <?php
+                if(isset($_SESSION["currentUser"]) == false){
+                    echo '<li><a href="login.php" id="login">Login</a></li>';
+                }else{
+                    echo '<li><a href="logout.php" id="logout">Logout</a></li>';
+                }
+
+            ?>
     			<li><a href="register.php" id="register">Register</a></li>
     			<li><a href="" id="mycart">My Cart</a></li>
                 <li><a href="mydetails.php" id="mydetails">My Details</a></li>

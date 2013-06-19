@@ -306,6 +306,9 @@ form #submit:hover {
 	font-family: 'arial', 'sans-serif';
 	text-decoration: none;
 }
-#mydetails a:hover {
+#mydetails a:hover{
 	color: #00A99D;
 }
+#update #submit {
+}
+
