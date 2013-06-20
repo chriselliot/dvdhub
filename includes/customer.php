@@ -53,7 +53,7 @@ class Customer {
 
 		$oDatabase = new Database();
 
-		$sQuery = "SELECT CustomerID FROM tbcustomer WHERE UserName ='".$sUserName."'";
+		$sQuery = "SELECT CustomerID FROM tbcustomer WHERE UserName ='".$oDatabase->escape_value($sUserName)."'";
 		$oResult = $oDatabase->query($sQuery);
 		$aCustomer = $oDatabase->fetch_array($oResult);
 
@@ -77,7 +77,7 @@ class Customer {
 		if($this->iCustomerID == 0){
 		
 			$sQuery = "INSERT INTO tbcustomer (FirstName, LastName, Address, Telephone, Email, UserName, Password)
-					VALUES ('".$this->sFirstName."', '".$this->sLastName."', '".$this->sAddress."','".$this->sTelephone."', '".$this->sEmail."', '".$this->sUserName."', '".$this->sPassword."')";
+					VALUES ('".$oDatabase->escape_value($this->sFirstName)."', '".$oDatabase->escape_value($this->sLastName)."', '".$oDatabase->escape_value($this->sAddress)."','".$oDatabase->escape_value($this->sTelephone)."', '".$oDatabase->escape_value($this->sEmail)."', '".$oDatabase->escape_value($this->sUserName)."', '".$oDatabase->escape_value($this->sPassword)."')";
 			
 			$oResult = $oDatabase->query($sQuery);
 
@@ -89,12 +89,12 @@ class Customer {
 
 		}else{
 			$sQuery = "UPDATE tbcustomer 
-						SET FirstName = '".$this->sFirstName."',
-							LastName = '".$this->sLastName."',
-							Address = '".$this->sAddress."',
-							Telephone = '".$this->sTelephone."',
-							Email = '".$this->sEmail."'
-						WHERE CustomerID = ".$this->iCustomerID;
+						SET FirstName = '".$oDatabase->escape_value($this->sFirstName)."',
+							LastName = '".$oDatabase->escape_value($this->sLastName)."',
+							Address = '".$oDatabase->escape_value($this->sAddress)."',
+							Telephone = '".$oDatabase->escape_value($this->sTelephone)."',
+							Email = '".$oDatabase->escape_value($this->sEmail)."'
+						WHERE CustomerID = ".$oDatabase->escape_value($this->iCustomerID);
 						
 
 			$oResult = $oDatabase->query($sQuery);

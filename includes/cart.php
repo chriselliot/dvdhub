@@ -32,8 +32,8 @@ class Cart{
 	public function __get($sProperty){
 
 		switch($sProperty){
-			case "productID":
-				return $this->iProductID;
+			case "contents":
+				return $this->aContents;
 				break;
 			default:
 				die($sProperty . " cannot be read from");
@@ -45,11 +45,11 @@ class Cart{
 
 //TESTING
 
-$oCart = new Cart();
+/*$oCart = new Cart();
 $oCart->add("12", 2);
 $oCart->add("18", 5);
 
 echo "<pre>";
 print_r($oCart);
-echo "</pre>";
+echo "</pre>";*/
 ?>

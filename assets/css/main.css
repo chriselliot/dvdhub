@@ -368,3 +368,14 @@ form #submit:hover {
 	font-weight: bold;
 	color: #00A99D;
 }
+#grandtotal {
+	
+	font-family: 'arial';
+	height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+}
+#grandtotal span {
+	color: #00A99D;
+	font-weight: bold;
+}

@@ -3,7 +3,7 @@ session_start();
 require_once("includes/head.php");
 require_once("includes/form.php");
 require_once("includes/customer.php");
-
+require_once("includes/cart.php");
 
 $oForm = new Form();
 
@@ -21,6 +21,12 @@ if(isset($_POST["submit"])){
         if($oTestCustomer->password == $_POST["password"]){
 
             $_SESSION["currentUser"] = $oTestCustomer->customerID;
+
+            $oCart = new Cart();
+            $oCart->add("2",6);
+            $oCart->add("20",8);
+            
+            $_SESSION['cart'] = $oCart;
 
             header("Location: mydetails.php"); 
             exit;
