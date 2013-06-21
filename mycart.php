@@ -16,6 +16,7 @@ if(isset($_SESSION["currentUser"]) == false){
     
   }
 
+
 echo $oCV->render($oCart);
 
 require_once("includes/foot.php");

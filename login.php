@@ -23,12 +23,10 @@ if(isset($_POST["submit"])){
             $_SESSION["currentUser"] = $oTestCustomer->customerID;
 
             $oCart = new Cart();
-            $oCart->add("2",6);
-            $oCart->add("20",8);
             
             $_SESSION['cart'] = $oCart;
 
-            header("Location: mydetails.php"); 
+            header("Location: index.php"); 
             exit;
 
         }else{

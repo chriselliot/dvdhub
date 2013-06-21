@@ -1,4 +1,5 @@
 <?php
+require_once("cart.php");
 session_start();
 require_once ('menuView.php');
 require_once('genreManager.php');
@@ -6,6 +7,8 @@ $oMV = new MenuView();
 $oGM = new GenreManager();
 
 $aAllGenre = $oGM->getAllGenre();
+
+$iItem = 0;
 
 ?>
 
@@ -27,13 +30,16 @@ $aAllGenre = $oGM->getAllGenre();
             <?php
                 if(isset($_SESSION["currentUser"]) == false){
                     echo '<li><a href="login.php" id="login">Login</a></li>';
+
                 }else{
                     echo '<li><a href="logout.php" id="logout">Logout</a></li>';
+                    $oCart = $_SESSION["cart"];
+                    $iItem = array_sum($oCart->contents);
                 }
 
             ?>
     			<li><a href="register.php" id="register">Register</a></li>
-    			<li><a href="mycart.php" id="mycart">My Cart</a></li>
+    			<li><a href="mycart.php" id="mycart">(<?php echo $iItem; ?>)</a></li>
                 <li><a href="mydetails.php" id="mydetails">My Details</a></li>
     		</ul>
     	</div>

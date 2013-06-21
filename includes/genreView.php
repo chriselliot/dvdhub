@@ -4,11 +4,11 @@ class GenreView {
 
 
 	public function render($oGenre){
+		
+		$aDvds = $oGenre->dvds;
 
 		$sHTML = "";
 		$sHTML = '<h1>New Release <span>'.$oGenre->typeName.'</span> DVDs</h1>';
-
-		$aDvds = $oGenre->dvds;
 
 		for ($i=0;$i<count($aDvds);$i++) { 
 		          
@@ -23,7 +23,7 @@ class GenreView {
 								<div class="price">
 									<span>Price:</span>
 									<h3>$'.number_format($oCurrentDvd->price,2).'</h3>
-									<a href="" class="cart-button">add to cart</a>
+									<a href="addtocart.php?productID='.$oCurrentDvd->productID.'" class="cart-button">add to cart</a>
 									<a href="'.$oCurrentDvd->trailer.'" class="trailer-button">watch trailer</a>
 								</div>';
 				$sHTML .=	'</div>';

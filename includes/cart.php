@@ -35,6 +35,7 @@ class Cart{
 			case "contents":
 				return $this->aContents;
 				break;
+			
 			default:
 				die($sProperty . " cannot be read from");
 		}
