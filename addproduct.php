@@ -31,20 +31,33 @@ if(isset($_POST["submit"])){
             $oDvd->trailer = $_POST["trailer"];
             $oDvd->save();
 
-            header("Location:category.php?typeID=$oDvd->typeID"); 
+            header("Location:category.php?typeID=".$oDvd->typeID); 
             exit;
     }
 
 } 
 
+$aGenres = array();
+$aGenres[1] = "Comedy";
+$aGenres[2] = "Action";
+$aGenres[3] = "Sci-fi";
+$aGenres[4] = "Thriller";
+$aGenres[5] = "Horror";
+$aGenres[6] = "Drama";
+$aGenres[7] = "Kids";
+
+$aActive = array();
+$aActive[1] = "Active";
+$aActive[2] = "Inactive";
+
 $oForm->makeInput("title","Movie Title (year)");
 $oForm->makeInput("director","Director");
+$oForm->makeSelect("genre", "Genre",$aGenres);
 $oForm->makeTextArea("sypnosis","Sypnosis");
 $oForm->makeInput("price","Price");
-$oForm->makeInput("genre", "Genre");
 $oForm->makeInput("photoPath", "Sleeve Artwork");
-$oForm->makeInput("active", "Activation");
 $oForm->makeInput("trailer", "Link to Trailer");
+$oForm->makeSelect("active", "Activation",$aActive);
 $oForm->makeSubmit("submit", "Add");
 
 ?>

@@ -60,6 +60,11 @@ form #submit {
 form #submit:hover {
 	background-position: 0 38px;
 }
+form select {
+	margin-bottom: 10px;
+	height: 25px;
+	width: 206px;
+}
 #login-butt form #submit {
 	background-image: url('../images/login-button.png');
 	display: block;

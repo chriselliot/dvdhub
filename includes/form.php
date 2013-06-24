@@ -71,6 +71,33 @@ class Form {
 
 	}
 
+	public function makeSelect($sControlName,$sLabel,$aOptions){
+
+		$sData = "";
+		if(isset($this->aData[$sControlName])){ 
+			$sData = $this->aData[$sControlName];
+		}
+
+		$this->sHTML .= '
+					<label for="'.$sControlName.'" id="'.$sControlName.'">'.$sLabel.':</label>
+                    <select name="'.$sControlName.'" id="'.$sControlName.'">'."\n";
+
+        	foreach($aOptions as $key=>$value){
+
+        		if($key==$sData){
+        			//sticky option
+        			$this->sHTML .= '<option value="'.$key.'" selected="selected">'.$value.'</option>'."\n";
+
+        		}else{
+
+        			$this->sHTML .= '<option value="'.$key.'">'.$value.'</option>'."\n";
+
+        		}
+        	}
+            
+         $this->sHTML .= '</select><br />';
+	}
+
 
 	public function makeSubmit($sControlName,$sLabel){
 
