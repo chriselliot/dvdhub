@@ -7,18 +7,23 @@ $oForm = new Form();
 
 if(isset($_POST["submit"])){
 
-    $oForm->data = $_POST;  
+    $oForm->data = $_POST;
+    $oForm->files = $_FILES;
+
     $oForm->checkRequired("title");
     $oForm->checkRequired("director");
     $oForm->checkRequired("sypnosis");
     $oForm->checkRequired("price");
     $oForm->checkRequired("genre");
-    $oForm->checkRequired("photoPath");
     $oForm->checkRequired("active");
     $oForm->checkRequired("trailer");
-       
+
+    $oForm->checkImageUpload("photoPath");
 
     if($oForm->valid==true){
+
+            $sNewName ="images/".strtolower(preg_replace('/[\s\W]+/','',$_POST["title"])).".jpg";
+            $oForm->moveFile("photoPath",$sNewName);
 
             $oDvd = new Dvd();
             $oDvd->title = $_POST["title"];
@@ -26,7 +31,7 @@ if(isset($_POST["submit"])){
             $oDvd->sypnosis = $_POST["sypnosis"];
             $oDvd->price = $_POST["price"];
             $oDvd->typeID = $_POST["genre"];
-            $oDvd->photoPath = $_POST["photoPath"];
+            $oDvd->photoPath = $sNewName;
             $oDvd->active = $_POST["active"];
             $oDvd->trailer = $_POST["trailer"];
             $oDvd->save();
@@ -55,7 +60,7 @@ $oForm->makeInput("director","Director");
 $oForm->makeSelect("genre", "Genre",$aGenres);
 $oForm->makeTextArea("sypnosis","Sypnosis");
 $oForm->makeInput("price","Price");
-$oForm->makeInput("photoPath", "Sleeve Artwork");
+$oForm->makeFileUpload("photoPath", "Sleeve Artwork");
 $oForm->makeInput("trailer", "Link to Trailer");
 $oForm->makeSelect("active", "Activation",$aActive);
 $oForm->makeSubmit("submit", "Add");
@@ -67,8 +72,5 @@ $oForm->makeSubmit("submit", "Add");
 	<div id="update"><?php echo $oForm->html; ?></div>
 
 <?php
-//echo "<pre>";
-//print_r($oDvd);
-//echo "</pre>";
 require_once("includes/foot.php");
 ?>

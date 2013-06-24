@@ -5,13 +5,28 @@ class Form {
 	private $sHTML;
 	private $aData;
 	private $aErrors;
+	private $aFiles;
 
 	public function __construct(){
 
-		$this->sHTML = '<form action="" method="post">';
+		$this->sHTML = '<form action="" method="post" enctype="multipart/form-data">';
 		$this->aData = array();
 		$this->aErrors = array();
+		$this->aFiles = array();
 
+	}
+
+	public function makeFileUpload($sControlName,$sLabel){
+
+		$sError = "";
+		if(isset($this->aErrors[$sControlName])){
+			$sError = $this->aErrors[$sControlName];
+		}
+
+		$this->sHTML .='
+			<label for="'.$sControlName.'">'.$sLabel.':</label>
+            <input type="file" name="'.$sControlName.'" id="'.$sControlName.'" />
+			<div class="message">'.$sError.'</div><div class="clear"></div>';
 	}
 
 	public function makeInput($sControlName,$sLabel){
@@ -120,7 +135,6 @@ class Form {
 
 	}
 
-	//wont check if data is not availale
 
 	public function checkEmail($sControlName){
 
@@ -138,6 +152,37 @@ class Form {
 				$this->aErrors[$sControlName] = "Email is invalid"; 
 			}
 		}	
+
+	}
+
+	public function checkImageUpload($sControlName){
+
+		$aFile = $this->aFiles[$sControlName];
+
+		$sError = "";
+
+		if((!empty($aFile)) && ($aFile['error'] == 0)) {
+		  $filename = basename($aFile['name']);
+		  $ext = substr($filename, strrpos($filename, '.') + 1);
+		  if (($ext == "jpg") && ($aFile["type"] == "image/jpeg") && 
+			($aFile["size"] < 1000000)) {   
+		  } else {
+		     $sError =  "Error: Only .jpg images under 1mb are accepted for upload";
+		  }
+		} else {
+		 $sError = "Error: No file uploaded";
+		}
+		if($sError != ""){
+			$this->aErrors[$sControlName] = $sError; 
+		}
+	}
+
+	public function moveFile($sControlName,$sNewName){
+		
+		$aFile = $this->aFiles[$sControlName];
+
+		$sNewName = dirname(__FILE__).'/../assets/'.$sNewName;
+		move_uploaded_file($aFile['tmp_name'],$sNewName);
 
 	}
 
@@ -173,6 +218,9 @@ class Form {
 		switch ($sProperty) {
 			case 'data':
 				$this->aData = $value;
+				break;
+			case 'files':
+				$this->aFiles = $value;
 				break;	
 			default:
 				die($sProperty . " is unable to be written to");
