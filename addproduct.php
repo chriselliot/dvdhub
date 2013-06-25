@@ -2,6 +2,7 @@
 require_once("includes/head.php");
 require_once("includes/form.php");
 require_once("includes/dvd.php");
+require_once("includes/genreManager.php");
 
 $oForm = new Form();
 
@@ -42,14 +43,17 @@ if(isset($_POST["submit"])){
 
 } 
 
+
+$oGM = new GenreManager();
+$aGenreObjects = $oGM->getAllGenre();
+
 $aGenres = array();
-$aGenres[1] = "Comedy";
-$aGenres[2] = "Action";
-$aGenres[3] = "Sci-fi";
-$aGenres[4] = "Thriller";
-$aGenres[5] = "Horror";
-$aGenres[6] = "Drama";
-$aGenres[7] = "Kids";
+
+for($iCount=0;$iCount<count($aGenreObjects);$iCount++){
+    $oGenre = $aGenreObjects[$iCount];
+    $aGenres[$oGenre->typeID]=$oGenre->typeName;
+}
+
 
 $aActive = array();
 $aActive[1] = "Active";
@@ -57,19 +61,25 @@ $aActive[2] = "Inactive";
 
 $oForm->makeInput("title","Movie Title (year)");
 $oForm->makeInput("director","Director");
-$oForm->makeSelect("genre", "Genre",$aGenres);
+$oForm->makeSelect("genre", "Genre", $aGenres);
 $oForm->makeTextArea("sypnosis","Sypnosis");
 $oForm->makeInput("price","Price");
 $oForm->makeFileUpload("photoPath", "Sleeve Artwork");
 $oForm->makeInput("trailer", "Link to Trailer");
-$oForm->makeSelect("active", "Activation",$aActive);
+$oForm->makeSelect("active", "Activation", $aActive);
 $oForm->makeSubmit("submit", "Add");
 
 ?>
     
     <h1>Upload DVDs to <span>DVD HUB</span></h1>
 
-	<div id="update"><?php echo $oForm->html; ?></div>
+	<div id="update">
+    <?php 
+    //echo"<pre>";
+    //print_r($aGenres);
+    //echo "</pre>"; 
+    echo $oForm->html; ?>
+    </div>
 
 <?php
 require_once("includes/foot.php");

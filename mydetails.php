@@ -1,6 +1,4 @@
 <?php
-require_once("includes/cart.php");
-session_start();
 require_once("includes/head.php");
 require_once("includes/customer.php");
 require_once("includes/customerView.php");
