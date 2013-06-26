@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once("cart.php");
 session_start();
 require_once ('menuView.php');

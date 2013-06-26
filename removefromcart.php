@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once("includes/cart.php");
 session_start();
 
