@@ -30,11 +30,11 @@ class cartView {
 					$fSubTotal = $value * $oDvd->price;
 
 					$sHTML .= '<div class="cart-line">
-					    <div class="product-cell">'.$oDvd->title.'</div>
-					    <div class="cell">'.$value.'</div>
-					    <div class="cell">$'.number_format($oDvd->price,2).'</div>
-					    <div class="cell" id="total">$'.number_format($fSubTotal,2).'</div>
-					    <div class="cell"><a href="removefromcart.php?productID='.$oDvd->productID.'"></a></div>
+					    <div class="product-cell">'.htmlentities($oDvd->title).'</div>
+					    <div class="cell">'.htmlentities($value).'</div>
+					    <div class="cell">$'.htmlentities(number_format($oDvd->price,2)).'</div>
+					    <div class="cell" id="total">$'.htmlentities(number_format($fSubTotal,2)).'</div>
+					    <div class="cell"><a href="removefromcart.php?productID='.htmlentities($oDvd->productID).'"></a></div>
 					</div>';
 
 					$fGrandTotal += $fSubTotal;

@@ -3,6 +3,7 @@ require_once("includes/head.php");
 require_once("includes/form.php");
 require_once("includes/customer.php");
 require_once("includes/class.phpmailer.php");
+require_once("includes/encoder.php");
 
 $oForm = new Form();
 
@@ -35,8 +36,8 @@ if(isset($_POST["submit"])){
             $oCustomer->phone = $_POST["phone"];
             $oCustomer->email = $_POST["email"];
             $oCustomer->username = $_POST["username"];
-            $oCustomer->password = $_POST["password"];
-            $oCustomer->password = $_POST["confirmpassword"];
+            $oCustomer->password = Encoder::Encode($_POST["password"]);
+            $oCustomer->password = Encoder::Encode($_POST["confirmpassword"]);
             $oCustomer->save();
 
             $mail = new PHPMailer();

@@ -4,6 +4,7 @@ require_once("includes/head.php");
 require_once("includes/form.php");
 require_once("includes/customer.php");
 require_once("includes/cart.php");
+require_once("includes/encoder.php");
 
 $oForm = new Form();
 
@@ -18,16 +19,22 @@ if(isset($_POST["submit"])){
          $oForm->raiseCustomError("username","Username doesn't exist");
 
     }else{
-        if($oTestCustomer->password == $_POST["password"]){
+        if($oTestCustomer->password == Encoder::Encode($_POST["password"])){
 
             $_SESSION["currentUser"] = $oTestCustomer->customerID;
 
             $oCart = new Cart();
-            
             $_SESSION['cart'] = $oCart;
 
-            header("Location: index.php"); 
-            exit;
+            if($oTestCustomer->admin == 1){
+
+                header("Location: addproduct.php"); 
+                exit;
+            } else {
+
+                header("Location: index.php"); 
+                exit;
+            }
 
         }else{
 

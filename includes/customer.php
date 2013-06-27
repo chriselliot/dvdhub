@@ -10,7 +10,8 @@ class Customer {
 	private $sTelephone; 
 	private $sEmail; 
 	private $sUserName; 
-	private $sPassword; 
+	private $sPassword;
+	private $iAdmin;
 
 
 	public function __construct(){
@@ -23,6 +24,7 @@ class Customer {
 		$this->sEmail = "";
 		$this->sUserName = "";
 		$this->sPassword = "";
+		$this->iAdmin = 0;
 
 	}
 	
@@ -31,7 +33,7 @@ class Customer {
 
 		$oDatabase = new Database();
 
-		$sQuery = "SELECT CustomerID, FirstName, LastName, Address, Telephone, Email, UserName, Password FROM tbcustomer WHERE CustomerID='".$iCustomerID."'";
+		$sQuery = "SELECT CustomerID, FirstName, LastName, Address, Telephone, Email, UserName, Password, Admin FROM tbcustomer WHERE CustomerID='".$iCustomerID."'";
 
 		$oResult = $oDatabase->query($sQuery);
 		$aCustomer = $oDatabase->fetch_array($oResult);
@@ -44,6 +46,7 @@ class Customer {
 		$this->sEmail = $aCustomer["Email"];
 		$this->sUserName = $aCustomer["UserName"];
 		$this->sPassword = $aCustomer["Password"];
+		$this->iAdmin = $aCustomer["Admin"];
 
 		$oDatabase->close();
 	}
@@ -77,7 +80,13 @@ class Customer {
 		if($this->iCustomerID == 0){
 		
 			$sQuery = "INSERT INTO tbcustomer (FirstName, LastName, Address, Telephone, Email, UserName, Password)
-					VALUES ('".$oDatabase->escape_value($this->sFirstName)."', '".$oDatabase->escape_value($this->sLastName)."', '".$oDatabase->escape_value($this->sAddress)."','".$oDatabase->escape_value($this->sTelephone)."', '".$oDatabase->escape_value($this->sEmail)."', '".$oDatabase->escape_value($this->sUserName)."', '".$oDatabase->escape_value($this->sPassword)."')";
+					VALUES ('".$oDatabase->escape_value($this->sFirstName)."',
+						'".$oDatabase->escape_value($this->sLastName)."',
+						'".$oDatabase->escape_value($this->sAddress)."',
+						'".$oDatabase->escape_value($this->sTelephone)."', 
+						'".$oDatabase->escape_value($this->sEmail)."', 
+						'".$oDatabase->escape_value($this->sUserName)."', 
+						'".$oDatabase->escape_value($this->sPassword)."')";
 			
 			$oResult = $oDatabase->query($sQuery);
 
@@ -134,6 +143,9 @@ class Customer {
 				break;
 			case "password":
 				return $this->sPassword;
+				break;
+			case "admin":
+				return $this->iAdmin;
 				break;
 			default:
 				die($sProperty . " cannot be read from.");
